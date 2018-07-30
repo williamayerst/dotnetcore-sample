@@ -1,5 +1,9 @@
 New-Item -Path "C:\" -Name "configuration.txt" -ItemType "file" -Value "This is a configuration string."
 
+$workingdir = $env:System_DefaultWorkingDirectory
+
+Copy-Item -Path "$workingdir\drop\dotnetcore-sample.zip" -Destination "c:\dotnetcore-sample.zip"
+
 $chocoExePath = 'C:\ProgramData\Chocolatey\bin'
 
 if ($($env:Path).ToLower().Contains($($chocoExePath).ToLower())) {
@@ -22,3 +26,5 @@ if($userPath) {
 
 # Run the installer
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+
+choco install dotnetcore dotnetcore-sdk dotnetcore-windowshosting webdeploy --yes
