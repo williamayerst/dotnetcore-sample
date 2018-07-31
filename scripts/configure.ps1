@@ -1,3 +1,5 @@
+Install-WindowsFeature -Name Web-Server  -IncludeAllSubFeature -IncludeManagementTools
+
 New-Item -Path "C:\" -Name "configuration.txt" -ItemType "file" -Value "This is a configuration string."
 
 $workingdir = $env:System_DefaultWorkingDirectory
