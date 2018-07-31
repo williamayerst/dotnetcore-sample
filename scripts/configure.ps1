@@ -27,4 +27,4 @@ if($userPath) {
 # Run the installer
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
-choco install dotnetcore dotnetcore-sdk dotnetcore-windowshosting webdeploy --yes
+choco install dotnetcore dotnetcore-sdk webdeploy --yes
