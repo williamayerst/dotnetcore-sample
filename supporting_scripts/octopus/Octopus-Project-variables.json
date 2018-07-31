@@ -1,0 +1,225 @@
+{
+  "Id": "variableset-Projects-1",
+  "OwnerId": "Projects-1",
+  "Version": 22,
+  "Variables": [
+    {
+      "Id": "0adac063-0908-d37e-cffb-95fb4ecc2f1c",
+      "Name": "imageid.region",
+      "Value": "#{name.region}",
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "26afb4f2-0f71-9a40-395b-76fdbb9284f6",
+      "Name": "imageid.storageaccesskey",
+      "Value": null,
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "Sensitive",
+      "IsSensitive": true
+    },
+    {
+      "Id": "ba92dd6d-7da9-fd17-1fad-ae83b7d51a40",
+      "Name": "imageid.storageaccount",
+      "Value": "#{name.companycode}#{name.platformsvc}#{name.region}stor#{name.environment}",
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "39fdfaa4-47cf-b52f-e2fe-9efc238cfa66",
+      "Name": "imageid.version",
+      "Value": "#{Octopus.Release.Number}",
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "a8769a74-e9f4-d4ac-1e4b-d5d2c8a2ba43",
+      "Name": "name.companycode",
+      "Value": "wa",
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "205d0238-35d5-7ed0-5940-21525c39f7e1",
+      "Name": "name.environment",
+      "Value": "np",
+      "Description": null,
+      "Scope": {
+        "Environment": [
+          "Environments-1"
+        ]
+      },
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "eef55294-0b7c-5bab-13f8-57b6e4c99529",
+      "Name": "name.environment",
+      "Value": "p",
+      "Description": "",
+      "Scope": {
+        "Environment": [
+          "Environments-2"
+        ]
+      },
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "c945c915-c153-fde8-94bd-91e173046f34",
+      "Name": "name.platformsvc",
+      "Value": "#{Octopus.Project.Name}",
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "60bdeaf5-f543-9a5f-ecee-9272d1847475",
+      "Name": "name.region",
+      "Value": "eun",
+      "Description": null,
+      "Scope": {
+        "Machine": [
+          "Machines-1",
+          "Machines-3"
+        ]
+      },
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "2fcab9e3-d2c6-5dff-ed37-4b2ff17d669c",
+      "Name": "name.region",
+      "Value": "euw",
+      "Description": "",
+      "Scope": {
+        "Machine": [
+          "Machines-2",
+          "Machines-4"
+        ]
+      },
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "aa9ef7a7-8c38-5492-7fee-cf0baafe27da",
+      "Name": "rgName",
+      "Value": "#{name.companycode}-#{name.platformsvc}-#{imageid.region}-rg-#{name.environment}",
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    },
+    {
+      "Id": "b2370a66-c9ee-44ce-70ac-3d02087fc2ba",
+      "Name": "vmssName",
+      "Value": "#{name.companycode}-#{name.platformsvc}-#{imageid.region}-vmss-#{name.environment}",
+      "Description": null,
+      "Scope": {},
+      "IsEditable": true,
+      "Prompt": null,
+      "Type": "String",
+      "IsSensitive": false
+    }
+  ],
+  "ScopeValues": {
+    "Environments": [
+      {
+        "Id": "Environments-1",
+        "Name": "NonProd"
+      },
+      {
+        "Id": "Environments-2",
+        "Name": "Prod"
+      }
+    ],
+    "Machines": [
+      {
+        "Id": "Machines-1",
+        "Name": "NP-NorthEurope"
+      },
+      {
+        "Id": "Machines-2",
+        "Name": "NP-WestEurope"
+      },
+      {
+        "Id": "Machines-3",
+        "Name": "P-NorthEurope"
+      },
+      {
+        "Id": "Machines-4",
+        "Name": "P-WestEurope"
+      }
+    ],
+    "Actions": [
+      {
+        "Id": "cd3f9ef3-921f-46bf-a7d3-de3cd6174741",
+        "Name": "1. Generate VMSS Image ID URL"
+      },
+      {
+        "Id": "92791ae5-bbd0-40d8-a84e-2d1ff41b5312",
+        "Name": "2. Update VMSS with new Image"
+      }
+    ],
+    "Roles": [
+      {
+        "Id": "NP-NorthEurope-Role",
+        "Name": "NP-NorthEurope-Role"
+      },
+      {
+        "Id": "NP-WestEurope-Role",
+        "Name": "NP-WestEurope-Role"
+      },
+      {
+        "Id": "P-NorthEurope-Role",
+        "Name": "P-NorthEurope-Role"
+      },
+      {
+        "Id": "P-WestEurope-Role",
+        "Name": "P-WestEurope-Role"
+      }
+    ],
+    "Channels": [
+      {
+        "Id": "Channels-1",
+        "Name": "Default"
+      }
+    ],
+    "TenantTags": []
+  },
+  "Links": {
+    "Self": "/api/variables/variableset-Projects-1"
+  }
+}
