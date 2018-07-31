@@ -1,4 +1,4 @@
-Install-WindowsFeature -Name Web-Server  -IncludeAllSubFeature -IncludeManagementTools
+
 
 New-Item -Path "C:\" -Name "configuration.txt" -ItemType "file" -Value "This is a configuration string."
 
@@ -29,4 +29,6 @@ if($userPath) {
 # Run the installer
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
-choco install dotnetcore dotnetcore-sdk webdeploy --yes
+choco install dotnetcore dotnetcore-sdk dotnetcore-windowshosting webdeploy --yes
+# choco install ddotnetcore-windowshosting --yes
+# Install-WindowsFeature -Name Web-Server  -IncludeAllSubFeature -IncludeManagementTools
