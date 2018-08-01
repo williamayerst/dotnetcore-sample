@@ -1,8 +1,8 @@
 
 
 write-host "Setting WorkingDir Variable"
-$workingdir = $env:System_DefaultWorkingDirectory
-$version = $env:Build_Buildnumber
+$workingdir = $args[0] # $env:System_DefaultWorkingDirectory
+$version = $args[1] #$env:Build_Buildnumber
 
 New-item -Path "C:\" -Name "version_$version.txt" -itemtype "file" -Value "This is version $version"
 
