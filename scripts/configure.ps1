@@ -2,6 +2,9 @@
 
 write-host "Setting WorkingDir Variable"
 $workingdir = $env:System_DefaultWorkingDirectory
+$version = $env:Build_Buildnumber
+
+New-item -Path "C:\" -Name "version_$version.txt" -itemtype "file" -Value "This is version $version"
 
 write-host "Creating drop directory"
 New-Item -Path "C:\" -Name "drop" -ItemType "directory" 
