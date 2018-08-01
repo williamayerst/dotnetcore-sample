@@ -1,11 +1,19 @@
 
 
-New-Item -Path "C:\" -Name "configuration.txt" -ItemType "file" -Value "This is a configuration string."
-
+write-host "Setting WorkingDir Variable"
 $workingdir = $env:System_DefaultWorkingDirectory
 
-Copy-Item -Path "$workingdir\drop\dotnetcore-sample.zip" -Destination "c:\dotnetcore-sample.zip"
+write-host "Creating drop directory"
+New-Item -Path "C:\" -Name "drop" -ItemType "directory" 
 
+Write-Host "Copying to local drop directory"
+Copy-Item -Path "$workingdir\drop\*" -Destination "c:\drop" -recurse -Force -Verbose
+
+write-host "Getting drop directory contents"
+get-childitem -Path "c:\drop" -Include *.dll | Write-Host
+
+
+write-host "Installing chocolatey"
 $chocoExePath = 'C:\ProgramData\Chocolatey\bin'
 
 if ($($env:Path).ToLower().Contains($($chocoExePath).ToLower())) {
@@ -29,6 +37,7 @@ if($userPath) {
 # Run the installer
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
-choco install dotnetcore dotnetcore-sdk dotnetcore-windowshosting webdeploy --yes
+write-host "Installing DotNetCore bits"
+choco install dotnetcore dotnetcore-sdk webdeploy --yes
 # choco install ddotnetcore-windowshosting --yes
 # Install-WindowsFeature -Name Web-Server  -IncludeAllSubFeature -IncludeManagementTools
