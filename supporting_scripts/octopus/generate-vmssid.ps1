@@ -1,6 +1,10 @@
-$storageAccount = "#{imageid.storageaccount}"
-$accesskey = "#{imageid.storageaccountaccesskey}"
- 
+$storageAccount = '#{imageid.storageaccount}'
+$accesskey = '#{imageid.storageaccountaccesskey}'
+$imageregion = '#{imageid.region}'
+$imageversion = '#{imageid.version}'
+
+write-host "Connecting to $storageaccount"
+write-host "Getting imageID for region: $imageregion and version: $imageversion"
  
 function GetTableEntityAll($TableName) {
     $version = "2017-04-17"
@@ -25,14 +29,12 @@ function GetTableEntityAll($TableName) {
 Write-Host "Getting all table entities"
 $tableItems = GetTableEntityAll -TableName images
 
+$tableItems | ft rowkey,partitionkey,imageURI 
+
 Write-Host "Filtering all table entities"
 
-$versionItem = $tableItems | `
-    Where-Object -Property PartitionKey -eq "#{imageid.version}" | `
-    Where-Object -Property Rowkey -eq "#{imageid.region}"
+$versionItem = $tableItems | Where {$_.PartitionKey -eq $imageversion -and $_.RowKey -eq $imageregion}
 
-Write-Host "Setting OctopusVariable"
+Write-Host "Setting OctopusVariable to $($versionItem.imageURI)"
 
-    Set-OctopusVariable -name "imageid.URL" -value $versionItem.imageURL 
-
-# https://wavstscustomeunstornp.blob.core.windows.net/system/Microsoft.Compute/Images/vsts-buildimagetask/20180731.3-osDisk.1f76f07a-4497-40c5-bf8f-31eccb9f4988.vhd
+Set-OctopusVariable -name "outputimageidurl" -value $($versionItem.imageURI)
