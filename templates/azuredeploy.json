@@ -164,7 +164,8 @@
         "properties": {
           "overprovision": "true",
           "upgradePolicy": {
-            "mode": "Manual"
+            "mode": "Automatic",
+            /*"AutomaticOSUpgrade" : "true" */
           },
           "virtualMachineProfile": {
             "storageProfile": {
