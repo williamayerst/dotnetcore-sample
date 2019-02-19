@@ -2,6 +2,7 @@
 # This file is needed only if you plan to package the app as a container in your CI process
 FROM microsoft/aspnetcore:2.0
 
+
 # Create app directory
 WORKDIR /app
 
